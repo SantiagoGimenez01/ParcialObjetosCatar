@@ -7,13 +7,20 @@ class Cocinero{
     }
 }
 
-object chef{
+class Chef{
+    const caloriasLimite
 
-    method calificar(plato) = if(plato.esBonito()) 10 else 0
+    method cumpleExpectativas(plato) = plato.esBonito() && plato.calorias() <= caloriasLimite
+    method calificar(plato) = if(self.cumpleExpectativas(plato)) 10 else 0
+}
+
+class Souschef inherits Chef{
+
+    override method calificar(plato) = if(self.cumpleExpectativas(plato)) 10 else (plato.calorias() / 100).min(6)
 }
 
 class Pastelero{
     const nivelDulzor
 
-    method calificar(plato) = 5 * plato.azucar() / nivelDulzor
+    method calificar(plato) = (5 * plato.azucar() / nivelDulzor).min(10)
 }
