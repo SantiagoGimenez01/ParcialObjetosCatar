@@ -15,9 +15,9 @@ class Principal{
 }
 
 class Postre{
-  const colores = []
+  const colores
   const property azucar = 120
 
-  method esBonito() = colores.size() > 3
+  method esBonito() = colores > 3
   method calorias() = 3 * azucar + 100
 }
