@@ -1,0 +1,33 @@
+import cocineros.*
+import torneo.*
+import platos.*
+
+describe "Test de pastelero" {
+    const cocineroPastelero = new Cocinero(especialidad = pastelero)
+    const cocineroChef = new Cocinero(especialidad = chef)
+    const cocineroSouschef = new Cocinero(especialidad = souschef)
+    const cocineroDulce = new Cocinero(especialidad = pasteleroDulce)
+    const chef = new Chef(caloriasLimite = 100)
+    const pastelero = new Pastelero(nivelDulzor = 100)
+    const pasteleroDulce = new Chef(caloriasLimite = 5000)
+    const souschef = new Souschef(caloriasLimite = 50)
+  test "Pastelero calificando una entrada" {
+    const entrada = cocineroSouschef.cocinar()
+    assert.equals(0, cocineroPastelero.catar(entrada))
+  }
+
+  test "Pastelero calificando un plato principal"{
+    const platoPricipal = cocineroChef.cocinar()
+    assert.equals(5, cocineroPastelero.catar(platoPricipal))
+  }
+
+  test "Pastelero calificando un postre"{
+    const postre = cocineroPastelero.cocinar()
+    assert.equals(6, cocineroPastelero.catar(postre))
+  }
+
+  test "Pastelero no se pasa de la calificacion maxima (10)"{
+    const postreSuperDulce = cocineroDulce.cocinar()
+    assert.equals(10, cocineroPastelero.catar(postreSuperDulce))
+  }
+}

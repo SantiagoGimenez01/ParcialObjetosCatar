@@ -1,26 +1,27 @@
-
-class Entrada{
-  const property azucar = 0
+class Plato{
   const property autor
+  const caloriasBase = 100
 
+  method calorias() = 3 * self.azucar() + caloriasBase
+  method azucar()
+}
+class Entrada inherits Plato{
+
+  override method azucar() = 0
   method esBonito() = true
-  method calorias() = 3 * azucar + 100
 }
 
-class Principal{
+class Principal inherits Plato{
   const esBonito 
-  const property azucar = 50
-  const property autor
+  const property azucarAgregado
 
   method esBonito() = esBonito
-  method calorias() = 3 * azucar + 100
+  override method azucar() = azucarAgregado
 }
 
-class Postre{
+class Postre inherits Plato{
   const colores
-  const property azucar = 120
-  const property autor
 
   method esBonito() = colores > 3
-  method calorias() = 3 * azucar + 100
+  override method azucar() = 120
 }

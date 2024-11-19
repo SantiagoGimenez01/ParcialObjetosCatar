@@ -18,7 +18,7 @@ class Chef{
 
     method cumpleExpectativas(plato) = plato.esBonito() && plato.calorias() <= caloriasLimite
     method calificar(plato) = if(self.cumpleExpectativas(plato)) 10 else 0
-    method crearPlato() = new Principal(esBonito = true, azucar = caloriasLimite, autor = self)
+    method crearPlato() = new Principal(esBonito = true, azucarAgregado = caloriasLimite, autor = self)
 }
 
 class Souschef inherits Chef{
